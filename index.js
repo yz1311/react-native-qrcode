@@ -538,17 +538,16 @@ function _getTypeNumber (sText, nCorrectLevel) {
     return nType;
 }
 
-const QRCode = React.createClass({
-    getDefaultProps () {
-        return {
-            width: 256,
-            height: 256,
-            typeNumber: 4,
-            colorDark: '#000000',
-            colorLight: '#ffffff',
-            correctLevel: QRErrorCorrectLevel.H,
-        };
-    },
+class QRCode extends React.Component{
+    static defaultProps = {
+        width: 256,
+        height: 256,
+        typeNumber: 4,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRErrorCorrectLevel.H,
+    };
+   
     componentWillMount () {
         const { text, correctLevel } = this.props;
         this.oQRCode = new QRCodeModel(_getTypeNumber(text, correctLevel), correctLevel);
@@ -601,7 +600,7 @@ const QRCode = React.createClass({
             </View>
         );
     },
-});
+}
 
 QRCode.QRErrorCorrectLevel = QRErrorCorrectLevel;
 
