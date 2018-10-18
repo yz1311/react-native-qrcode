@@ -553,7 +553,8 @@ class QRCode extends React.Component{
         this.oQRCode = new QRCodeModel(_getTypeNumber(text, correctLevel), correctLevel);
         this.oQRCode.addData(text);
         this.oQRCode.make();
-    },
+    }
+
     componentWillReceiveProps (nextProps) {
         const keys = ['text', 'width', 'height', 'typeNumber', 'colorDark', 'colorLight', 'correctLevel'];
         const oldProps = _.pick(this.props, keys);
@@ -564,12 +565,14 @@ class QRCode extends React.Component{
             this.oQRCode.addData(text);
             this.oQRCode.make();
         }
-    },
+    }
+
     renderCell (oQRCode, row, col, nWidth, nHeight, colorDark, colorLight) {
         return (
             <View style={{ width:nWidth, height:nHeight, backgroundColor:oQRCode.isDark(row, col) ? colorDark : colorLight }} key={col} />
         );
-    },
+    }
+
     renderRow (oQRCode, row, width, nCount, nWidth, nHeight, colorDark, colorLight) {
         const items = [];
         for (let col = 0; col < nCount; col++) {
@@ -580,7 +583,8 @@ class QRCode extends React.Component{
                 {items}
             </View>
         );
-    },
+    }
+
     render () {
         let { colorDark, colorLight, width, height } = this.props;
         const oQRCode = this.oQRCode;
@@ -599,9 +603,10 @@ class QRCode extends React.Component{
                 {rows}
             </View>
         );
-    },
+    }
 }
 
 QRCode.QRErrorCorrectLevel = QRErrorCorrectLevel;
 
 module.exports = QRCode;
+
